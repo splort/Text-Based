@@ -25,7 +25,7 @@ program=$2
 
 # Run the test without the CHECK lines, captures the result
 echo "Testing $test_file..."
-out=`grep -v CHECK $test_file | python $program`
+out=`grep -v CHECK $test_file | python2 $program`
 if [ $? != 0 ]; then
   echo "Error executing $program"
   exit 1
