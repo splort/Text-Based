@@ -1,0 +1,28 @@
+right
+CHECK: dark
+back
+CHECK: hall
+left
+CHECK: torch
+back
+CHECK: hall
+right
+CHECK: corridor
+right
+CHECK: locked
+back
+CHECK: corridor
+forward
+CHECK: barred
+back
+CHECK: corridor
+left
+CHECK: axe
+back
+CHECK: corridor
+forward
+CHECK: key
+back
+CHECK: corridor
+right
+CHECK: win
