@@ -150,12 +150,16 @@ class KeyRoom:
       if (self.game.items.count('key') == False):
         print "A key glints faintly in the corner. Do you take it?"
         action = raw_input("$ ")
+        if (self.game.match(action)):
+          return
         if (self.key.match(action)):
           self.game.items.append('key')
           print "You picked up the key."
     else:
       print "The barricade is far too sturdy for you to break off with your bare hands. You should go back."
     action = raw_input('$ ')
+    if (self.game.match(action)):
+      return
     if self.back.match(action):
       self.nextState = 'corridor'
 
@@ -206,7 +210,7 @@ class TextBased:
     # Current state
     self.state = self.hall
     # Global commands (work on every room)
-    self.quit = re.compile('(quit|exit)', re.IGNORECASE);
+    self.quit = re.compile('^(quit|exit)$', re.IGNORECASE);
 
   # Match global commands (returns true if matched anything)
   def match(self, action):
