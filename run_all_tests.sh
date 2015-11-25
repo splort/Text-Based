@@ -8,7 +8,7 @@ for program in *.py; do
   test_dir=tests/$program
   prog=$root/$program
 
-  if [ ! -d $test_dir ]; then
+  if [ ! -d "$test_dir" ]; then
     continue
   fi
 
