@@ -1,4 +1,5 @@
 import re
+import random
 
 class MainHall:
   def __init__(self, game):
