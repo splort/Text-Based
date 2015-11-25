@@ -79,12 +79,12 @@ class Corridor:
       action = raw_input("$ ")
       if (self.game.match(action)):
         return
-    if (self.left.match(action)):
-      self.nextState = 'armoury'
-    elif (self.forward.match(action)):
-      self.nextState = 'key'
-    elif (self.right.match(action)):
-      self.nextState = 'boss'
+      if (self.left.match(action)):
+        self.nextState = 'armoury'
+      elif (self.forward.match(action)):
+        self.nextState = 'key'
+      elif (self.right.match(action)):
+        self.nextState = 'boss'
     else:
       print "It's too dark in here. You better go back."
       action = raw_input("$ ")
