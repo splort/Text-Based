@@ -1,0 +1,9 @@
+left
+CHECK: storage
+pick torch
+CHECK: torch
+kick rat
+CHECK: rat
+back
+CHECK: hall
+quit
