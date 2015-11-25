@@ -3,6 +3,8 @@ CHECK: dark
 back
 CHECK: hall
 left
+CHECK: storage
+pick torch
 CHECK: torch
 back
 CHECK: hall
@@ -17,12 +19,17 @@ CHECK: barred
 back
 CHECK: corridor
 left
+CHECK: armoury
+pick axe
 CHECK: axe
 back
 CHECK: corridor
 forward
 CHECK: key
+pick key
+CHECK: key
 back
 CHECK: corridor
 right
 CHECK: win
+quit
