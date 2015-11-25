@@ -15,6 +15,8 @@ class MainHall:
   def run(self):
     print "You found yourself in what seems to be a main hall. There are exits to the left and right."
     action = raw_input("$ ")
+    if (self.game.match(action)):
+      return
     if (self.left.match(action)):
       self.nextState = 'storage'
     elif (self.right.match(action)):
@@ -39,6 +41,8 @@ class Storage:
   def run(self):
     print "This is the storage. There is a torch and lots or rats."
     action = raw_input("$ ")
+    if (self.game.match(action)):
+      return
     if (self.back.match(action)):
       self.nextState = 'hall'
     elif (self.pick.match(action)):
@@ -73,6 +77,8 @@ class Corridor:
       print "This is the corridor. You can see some doors - one to the left, one to the right, and one directly ahead."
       print "Which way do you go?"
       action = raw_input("$ ")
+      if (self.game.match(action)):
+        return
     if (self.left.match(action)):
       self.nextState = 'armoury'
     elif (self.forward.match(action)):
@@ -82,6 +88,8 @@ class Corridor:
     else:
       print "It's too dark in here. You better go back."
       action = raw_input("$ ")
+      if (self.game.match(action)):
+        return
       if (self.back.match(action)):
         self.nextState = 'hall'
 
@@ -103,6 +111,8 @@ class Armoury:
   def run(self):
     print "You seem to be in an armoury; an axe rests on the floor in front of you."
     action = raw_input("$ ")
+    if (self.game.match(action)):
+      return
     if (self.axe.match(action)):
       if (self.game.items.count('axe')):
         print "You already have the axe."
@@ -170,6 +180,8 @@ class BossRoom:
     else:
       print "You don't even try the padlock; you should probably try another way."
     action = raw_input('$ ')
+    if (self.game.match(action)):
+      return
     if self.back.match(action):
       self.nextState = 'corridor'
 
@@ -193,6 +205,15 @@ class TextBased:
     self.exit = False
     # Current state
     self.state = self.hall
+    # Global commands (work on every room)
+    self.quit = re.compile('(quit|exit)', re.IGNORECASE);
+
+  # Match global commands (returns true if matched anything)
+  def match(self, action):
+    if (self.quit.match(action)):
+      self.exit = True
+      return True
+    return False
 
   # Main run method, infinite loop until "exit" is requested
   def run(self):
